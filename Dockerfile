@@ -21,7 +21,7 @@ RUN conda config --add channels conda-forge
 RUN conda config --set channel_priority strict
 
 # Add git so you can clone the lsdmappingtools repo
-RUN conda install -y git python=3.6.7
+RUN conda install -y git python=3
 
 # Now add some conda packages
 RUN conda install -y gdal rasterio geopandas matplotlib=3.1 numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python
