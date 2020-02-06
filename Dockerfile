@@ -3,7 +3,7 @@
 
 # Pull base image. We start from the miniconda imade
 FROM conda/miniconda3
-MAINTAINER Simon Mudd (simon.m.mudd@ed.ac.uk) and Boris Gailleton (clubb@uni-potsdam.de)
+MAINTAINER Simon Mudd (simon.m.mudd@ed.ac.uk) and Boris Gailleton (b.gailleton@sms.ed.ac.uk)
 
 # Need this to shortcut the stupid tzdata noninteractive thing
 ARG DEBIAN_FRONTEND=noninteractive
