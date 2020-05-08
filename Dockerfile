@@ -16,7 +16,6 @@ RUN conda install -y -c conda-forge conda
 RUN conda config --add channels conda-forge
 
 
-
 # Set the channel
 RUN conda config --set channel_priority strict
 
@@ -30,7 +29,19 @@ RUN conda install -y gdal rasterio geopandas matplotlib=3.1 numpy scipy pytables
 RUN conda install -y ffmpeg
 
 # Some tools for fetching data
-RUN conda install -y wget unzip
+RUN conda install -y wget unzip tzdata
+
+# Some tools for fetching data
+RUN conda install -y lsdtopotools
+
+# Now add more to the geospatial stack
+RUN conda install -y fiona utm pyproj cartopy
+
+# Now the ipython stack for creating local ipython servers
+RUN conda install -y ipython ipkernel
+
+# Now an environment for building conda
+RUN conda install -y conda-build
 
 # Set the working directory
 WORKDIR /LSDTopoTools
