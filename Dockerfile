@@ -29,9 +29,6 @@ RUN conda install -y gdal rasterio geopandas matplotlib=3.1 numpy scipy pytables
 RUN conda install -y ffmpeg
 
 # Some tools for fetching data
-RUN conda install -y wget unzip tzdata
-
-# Some tools for fetching data
 RUN conda install -y lsdtopotools
 
 # Now add more to the geospatial stack
@@ -42,6 +39,10 @@ RUN conda install -y ipython ipkernel
 
 # Now an environment for building conda
 RUN conda install -y conda-build
+
+# Some tools for fetching data
+RUN conda install -y wget unzip
+
 
 # Set the working directory
 WORKDIR /LSDTopoTools
