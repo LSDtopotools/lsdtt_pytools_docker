@@ -35,7 +35,7 @@ RUN conda install -y lsdtopotools
 RUN conda install -y fiona utm pyproj cartopy
 
 # Now the ipython stack for creating local ipython servers
-RUN conda install -y ipython ipkernel
+RUN conda install -y ipython ipykernel
 
 # Now an environment for building conda
 RUN conda install -y conda-build

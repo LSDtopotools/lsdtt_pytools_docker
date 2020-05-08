@@ -2,7 +2,13 @@
 
 ![](https://raw.githubusercontent.com/LSDtopotools/lsdtt_viz_docker/master/images/LSD-logo.png)
 
-This is a docker container that has all the python packages you need to run LSDMappingTools.
+This docker container has all the components you need to run the full lsdtopotools stack.  
+
+* *LSDTopoTools* command line tools 
+* *lsdtopytools* for using LSDTopoTools interactively in python
+* *lsdviztools* for various automated plotting routines used to make figures for publications (lower level plotting if you just want to see what the code has done is in lsdtopytools)
+
+The package also 
 
 ## Instructions
 
@@ -38,22 +44,12 @@ $ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdttpytools_dock
   2. The `-v` stands for "volume" and in practice it links the files in the docker container with files in your host operating system. 
   3. After the `-v` you need to tell docker where the directories are on both the host operating system (in this case `C:\LSDTopoTools`) and the container (in this case `/LSDTopoTools`). These are separated by a colon (`:`).
 3. Once you do this you will get a `#` symbol showing that you are inside the container. You can now do *LSDTopoTools* stuff. 
-4. *IMPORTANT* you will need to run a script to clone or update *LSDMappingTools*. Run this by simply entering `Start_LSDTT.sh` into the command line. 
-5. To exit the container use `ctrl-D`. The containers all have linux environments so you will be able to use linux command line tools within the docker container.
 
-#### Running visualisation tools
+#### Running command line tools
 
-1. The python routines will be in `LSDTopoTools/LSDMappingTools`
-2. The programs are called with the pattern `python PlotChiAnalysis -h`
-3. The `-h` is a help flag that will list all the options.
+1. Command line tools are ready for use immediately. Try `# lsdtt-basic-metrics`
 
-## If nothing works
 
-The complexity of our python enviroment leads to many conflicts. We store functioning environments in the directory `conda_environments`. 
-
-If you have conda on your computer, then you can use the conda environment files in this directory to build a functioning environment.
-
-Use the command `$ conda create --name <env> --file <this file>`
 
 ## Docker notes
 
