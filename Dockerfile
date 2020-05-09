@@ -43,13 +43,16 @@ RUN conda install -y conda-build
 # Some tools for fetching data
 RUN conda install -y wget unzip
 
+# Now install the final bits for you jupyterhub functionality
+# and some web mapping
+RUN conda install -y jupyter folium
 
 # Set the working directory
 WORKDIR /LSDTopoTools
 
-# Copy the startup script
-COPY Start_LSDTT.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/Start_LSDTT.sh
+# Copy the startup script NOTE THIS IS NO LONGER REQUIRED
+# COPY Start_LSDTT.sh /usr/local/bin/
+# RUN chmod +x /usr/local/bin/Start_LSDTT.sh
 
 # Copy the script for fetching example data 
 COPY Get_LSDTT_example_data.sh /usr/local/bin/

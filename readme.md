@@ -8,7 +8,11 @@ This docker container has all the components you need to run the full lsdtopotoo
 * *lsdtopytools* for using LSDTopoTools interactively in python
 * *lsdviztools* for various automated plotting routines used to make figures for publications (lower level plotting if you just want to see what the code has done is in lsdtopytools)
 
-The package also 
+The package also includes a python geospatial stack:
+
+* fiona, gdal, rasterio, geopandas, folium, gdal, cartopy, and shapely
+
+It also allows some command line processing with GDAL. See some tips for using the GDAL command line tools here: https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_introduction_to_geospatial_data.html#_gdal
 
 ## Instructions
 
@@ -32,23 +36,53 @@ These are the bare bones instructions. For a bit more detail and potential bug f
   
 #### Part 2: Download and run the container
 
+_Preamble_: Once you have downloaded docker, you can control how much memory you give the docker containers. The default is 3Gb. If you have even moderate sized DEM data, this will not be enough. You can go into the docker settings (varies by operating system, use a search engine to figure out where they are) and increase the memory. 
+
 1. To get the container, go into a terminal (MacOS or Linux) or Powershell window (Windows) that has docker enabled and run:
 ```console
 $ docker pull lsdtopotools/lsdtt_pytools_docker
 ```
 2. Now you need to run the container:
 ```console
-$ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdttpytools_docker
+$ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pytools_docker
 ```
   1. The `-it` means "interactive".
   2. The `-v` stands for "volume" and in practice it links the files in the docker container with files in your host operating system. 
   3. After the `-v` you need to tell docker where the directories are on both the host operating system (in this case `C:\LSDTopoTools`) and the container (in this case `/LSDTopoTools`). These are separated by a colon (`:`).
 3. Once you do this you will get a `#` symbol showing that you are inside the container. You can now do *LSDTopoTools* stuff. 
 
+
+
 #### Running command line tools
 
 1. Command line tools are ready for use immediately. Try `# lsdtt-basic-metrics`
+2. To see what is possible, check out the following documentation:
+  * Note: for the below instructions, you will need the example datasets. Grab these with `# sh Get_LSDTT_example_data.sh`
+  * https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html
+  * https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_channel_extraction.html
+  * https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_chi_analysis.html
 
+#### Running a jupyter notebook from this container
+
+1. The lsdpytools container can also serve as a host for [jupyter notebooks](https://jupyter.org/)
+2. You need to open your docker container with a port:
+
+```console
+# docker run -it -v C:\LSDTopoTools:/LSDTopoTools -p 8888:8888 lsdtopotools/lsdtt_pytools_docker
+```
+
+  * Note that you should update the `C:\LSDTopoTools` to reflect the directory structure on your locak machine. 
+
+3. Then, inside the container, start the notebook:
+
+```console
+# jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root
+```
+
+4. When you run this command, it will give you some html addresses. *These will not work from your host computer!!* But these addresses do show you a `token`: you can see it in the address after `token=`.
+  1. Instead, go into a browser on your host computer and go to http://localhost:8888/
+  2. Then, in the password box, insert the `token` that was shown in the docker container. 
+  3. Yay, you can now start working with notebooks, using all the fun geospatial stuff that is in this container!
 
 
 ## Docker notes
