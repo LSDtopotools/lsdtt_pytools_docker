@@ -47,6 +47,12 @@ RUN conda install -y wget unzip
 # and some web mapping
 RUN conda install -y jupyter folium
 
+# Now we need some stuff to get lsdtopytools to install
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libfftw3-dev \
+&& rm -rf /var/lib/apt/lists/*
+
 # Set the working directory
 WORKDIR /LSDTopoTools
 
