@@ -43,7 +43,7 @@ RUN conda install -y ipython ipykernel jupyter
 RUN conda install -y conda-build
 
 # Now add some conda packages
-RUN conda install -y gdal rasterio geopandas matplotli numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python fiona utm pyproj cartopy folium h5py
+RUN conda install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python fiona utm pyproj cartopy folium h5py
 
 # Set the working directory
 WORKDIR /LSDTopoTools
