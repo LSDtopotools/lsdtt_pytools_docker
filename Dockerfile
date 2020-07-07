@@ -56,9 +56,12 @@ RUN apt-get update && apt-get install -y \
 # Set the working directory
 WORKDIR /LSDTopoTools
 
-# Copy the startup script NOTE THIS IS NO LONGER REQUIRED
-# COPY Start_LSDTT.sh /usr/local/bin/
-# RUN chmod +x /usr/local/bin/Start_LSDTT.sh
+# Get hdf5
+RUN conda install -y h5py
+
+# Copy the startup script to install python stack
+COPY install_lsdtt_python_packages.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/install_lsdtt_python_packages.sh
 
 # Copy the script for fetching example data 
 COPY Get_LSDTT_example_data.sh /usr/local/bin/
