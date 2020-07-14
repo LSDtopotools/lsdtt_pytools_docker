@@ -3,7 +3,7 @@
 # This is a startup script to install local python implementations
 # of the lsdtopotools stack
 # It grabs and unpacks the example data
-# it then builds the code from there. 
+# it then builds the code from there.
 # Author: SMM
 # Date: 07/07/2020
 
@@ -12,7 +12,7 @@ if [ -d /LSDTopoTools/python_packages/ ]
   then
     echo "You have a python packages directory"
   else
-    mkdir /LSDTopoTools/python_packages/ 
+    mkdir /LSDTopoTools/python_packages/
 fi
 
 # Now check for the various repos
@@ -60,6 +60,27 @@ LSDTT_VIZ_DIR="/LSDTopoTools/python_packages/lsdviztools"
 cd $LSDTT_VIZ_DIR
 pip install ./
 cd $BASE_DIR
+
+
+# clone or pull the repo, depending on what is in there
+# check if the files have been cloned
+if [ -d /LSDTopoTools/python_packages/lsdttparamselector/ ]
+  then
+    echo "The lsdviztools repository exists, updating to the latest version."
+    git --work-tree=/LSDTopoTools/python_packages/lsdttparamselector --git-dir=/LSDTopoTools/python_packages/lsdttparamselector/.git  pull origin master
+  else
+    echo "Cloning the LSDTopoTools2 repository"
+    git clone https://github.com/LSDtopotools/lsdttparamselector.git /LSDTopoTools/python_packages/lsdttparamselector
+fi
+
+# Now install the package
+echo "Installing llsdttparamselector."
+BASE_DIR="/LSDTopoTools/"
+LSDTT_VIZ_DIR="/LSDTopoTools/python_packages/lsdttparamselector"
+cd $LSDTT_VIZ_DIR
+pip install ./
+cd $BASE_DIR
+
 
 
 ## clone or pull the repo, depending on what is in there
