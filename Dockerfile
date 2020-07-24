@@ -45,6 +45,9 @@ RUN conda install -y conda-build
 # Now add some conda packages
 RUN conda install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python fiona utm pyproj cartopy folium h5py
 
+# Here you can put some missing packages
+RUN conda install -y descartes
+
 # Set the working directory
 WORKDIR /LSDTopoTools
 
@@ -52,6 +55,6 @@ WORKDIR /LSDTopoTools
 COPY install_lsdtt_python_packages.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/install_lsdtt_python_packages.sh
 
-# Copy the script for fetching example data 
+# Copy the script for fetching example data
 COPY Get_LSDTT_example_data.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/Get_LSDTT_example_data.sh
