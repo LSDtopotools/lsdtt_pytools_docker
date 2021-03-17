@@ -42,11 +42,17 @@ RUN conda install -y ipython ipykernel jupyter
 # Now an environment for building conda
 RUN conda install -y conda-build
 
-# Now add some conda packages
-RUN conda install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python fiona utm pyproj cartopy folium h5py
+# Now mamba since it is faster than conda
+RUN conda install -y mamba
 
-# Here you can put some missing packages
-RUN conda install -y descartes
+# Now add some conda packages
+RUN mamba install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python fiona utm pyproj cartopy folium h5py descartes
+
+# Add lsdtopytools
+RUN mamba install -y lsdtopytools
+
+# Add lsdviztools
+RUN pip install lsdviztools
 
 # Set the working directory
 WORKDIR /LSDTopoTools
