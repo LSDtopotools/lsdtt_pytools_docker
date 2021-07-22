@@ -34,7 +34,7 @@ RUN conda install -y ffmpeg
 RUN conda install -y lsdtopotools
 
 # Add git so you can clone the lsdmappingtools repo
-RUN conda install -y git python=3
+RUN conda install -y git python=3.8
 
 # Now the ipython stack for creating local ipython servers
 RUN conda install -y ipython ipykernel jupyter
@@ -48,11 +48,11 @@ RUN conda install -y mamba
 # Now add some conda packages
 RUN mamba install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python fiona utm pyproj cartopy folium h5py descartes click
 
-# Add lsdtopytools
-RUN mamba install -y lsdtopytools
-
 # Add lsdviztools
 RUN pip install lsdviztools
+
+# Add lsdtopytools
+RUN mamba install -y lsdtopytools
 
 # Set the working directory
 WORKDIR /LSDTopoTools
