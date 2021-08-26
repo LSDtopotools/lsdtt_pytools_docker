@@ -21,6 +21,7 @@ It also allows some command line processing with GDAL. See some tips for using t
 These are the bare bones instructions. For a bit more detail and potential bug fixes, scroll down to the section on [Docker notes](#docker-notes).
 
 1. Download and install [Docker for Windows](https://www.docker.com/docker-windows) (only works with Windows 10 enterprise), [Docker for Mac](https://www.docker.com/docker-mac), or Docker for [Ubuntu](https://www.docker.com/docker-ubuntu) or [Debian](https://www.docker.com/docker-debian).
+  * If you have windows linux subsystem 2 you should install Docker for [Ubuntu](https://www.docker.com/docker-ubuntu) in your linux subsystem
   * On MacOS we recommend installing docker using brew: `brew cask install docker`
   * On MacOs and Linux, after you install docker you will need to add permissions: `sudo usermod -a -G docker $USER`
   * On Windows 10 you will need to alter a bunch of settings. See [DNSection][Docker notes]
@@ -62,14 +63,13 @@ $ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pytools_doc
   * https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_channel_extraction.html
   * https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_chi_analysis.html
 
-#### Installing local python packages
+#### Running lsdviztools scripts. 
 
-1. We include a script to install some local python packages. To run, use:
-
-```console
-# install_lsdtt_python_packages.sh
-```
-2. This will install `lsdttparamselector`, `lsdttviztools`, and `lsdtopytools`.
+1. The lsdviztools package comes with some scripts. To see what they do use the `-h` flag. The scripts are:
+  * `lsdtt_grabopentopographydata` for downloading DEMs, converting them to lsdtopotools format and simple hillshading
+  * `lsdtt_plotbasicrasters` for lots of basic visualisation routines like draped plots swaths, channel profiles, etc
+  * `lsdtt_plotchianalysis` for plotting chi profiles, see Mudd et al. 2014 JGR-ES https://doi.org/10.1002/2013JF002981
+  * `lsdtt_plotconcavityanalysis` for plotting analysis of channel concavity index, see Mudd et al 2018 ESURF https://doi.org/10.5194/esurf-6-505-2018   
 
 #### Running a jupyter notebook from this container
 
@@ -130,6 +130,8 @@ Once you have done this you will need to log out and log back in again.
 
 
 #### Docker for Windows
+
+*NOTE with windows linux subsystem 2 you should install that, install ubuntu and then install docker for ubuntu on the subsystem.*
 
 I have not made any scientific study of this but most *LSDTopoTools* users are on Windows operating systems.
 

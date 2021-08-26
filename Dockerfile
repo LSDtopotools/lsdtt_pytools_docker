@@ -1,6 +1,9 @@
 # This is the full lsdtopytools container
-# It includes all the python packages needed to run lsdtopytools
-# As well as visualising the data
+# It includes all the python packages needed to run both lsdtopytools and lsdviztools
+# lsdtopytools and lsdviztools are installed
+# lsdtt command line tools are also installed
+# As is the jupyter notebook which you can start with 
+# jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root
 
 # Pull base image. We start from the miniconda imade
 FROM conda/miniconda3
@@ -33,7 +36,7 @@ RUN conda install -y ffmpeg
 # Install topotools command line interface
 RUN conda install -y lsdtopotools
 
-# Add git so you can clone the lsdmappingtools repo
+# Add git and the right version of python
 RUN conda install -y git python=3.8
 
 # Now the ipython stack for creating local ipython servers
@@ -46,20 +49,13 @@ RUN conda install -y conda-build
 RUN conda install -y mamba
 
 # Now add some conda packages
-RUN mamba install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python fiona utm pyproj cartopy folium h5py descartes click
-
-# Add lsdviztools
-RUN pip install lsdviztools
+RUN mamba install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python fiona utm pyproj cartopy folium h5py descartes click lsdviztools lsdttparamselector
 
 # Add lsdtopytools
 RUN mamba install -y lsdtopytools
 
 # Set the working directory
 WORKDIR /LSDTopoTools
-
-# Copy the startup script to install python stack
-COPY install_lsdtt_python_packages.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/install_lsdtt_python_packages.sh
 
 # Copy the script for fetching example data
 COPY Get_LSDTT_example_data.sh /usr/local/bin/
