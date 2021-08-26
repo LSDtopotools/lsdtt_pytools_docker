@@ -49,7 +49,10 @@ RUN conda install -y conda-build
 RUN conda install -y mamba
 
 # Now add some conda packages
-RUN mamba install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python fiona utm pyproj cartopy folium h5py descartes click lsdviztools lsdttparamselector
+RUN mamba install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python fiona utm pyproj cartopy folium h5py descartes
+
+# Add viztools and paramselector
+RUN pip install lsdviztools lsdttparamselector
 
 # Add lsdtopytools
 RUN mamba install -y lsdtopytools
