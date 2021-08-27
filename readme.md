@@ -148,3 +148,23 @@ Second, if you have that and have it installed, you might also need to add yours
 7. Log off from Windows and log back on.
 8. Click on Windows icon on bottom left and start Docker for Windows. This will start docker windows service.
 9. Start Windows Powershell and type docker --version. It will show Docker version 17.09.1-ce, build 19e2cf6, or whatever version you have.
+
+#### Notes on dockerhub (only for Simon)
+
+These are notes for how to push the most recent container to dockerhub. This is required because Docker stopped automated builds. The notes are a reminder to Simon only. If you are not Simon you should only continue reading if you need something to help you fall asleep. 
+
+1. Navigate to the repository and build the container locally with the appropriate tag:
+
+```console
+$ docker build -t lsdtopotools/lsdtt_pytools_docker .
+```
+
+2. Login to docker using `docker login`
+
+3. Push the container to docker hub:
+
+```console
+$ docker push lsdtopotools/lsdtt_pytools_docker:latest
+```
+
+4. If you are working from home, you then need to wait a very, very long time. 
