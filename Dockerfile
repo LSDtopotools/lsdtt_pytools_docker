@@ -52,7 +52,7 @@ RUN mamba install -y ipython ipykernel jupyter jupyter-book
 RUN mamba install -y gdal rasterio geopandas matplotlib numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python fiona utm pyproj cartopy folium h5py descartes
 
 # Add viztools and paramselector
-RUN pip install lsdviztools lsdttparamselector
+RUN pip install lsdviztools==0.4.8 lsdttparamselector
 
 # Add lsdtopytools
 RUN mamba install -y lsdtt-xtensor-python
