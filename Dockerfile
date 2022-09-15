@@ -40,7 +40,7 @@ RUN conda install -y lsdtopotools
 RUN conda install -y git python=3.8
 
 # Now the ipython stack for creating local ipython servers
-RUN conda install -y ipython ipykernel jupyter
+RUN conda install -y ipython ipykernel jupyter jupyter-book
 
 # Now an environment for building conda
 RUN conda install -y conda-build

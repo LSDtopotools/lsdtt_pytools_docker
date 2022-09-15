@@ -168,3 +168,19 @@ $ docker push lsdtopotools/lsdtt_pytools_docker:latest
 ```
 
 4. If you are working from home, you then need to wait a very, very long time. 
+
+#### Versioning and dockerhub
+
+You might also want to make a version for dockerhub. Do do this you need to tag your local version (this will tag the latest version)
+
+```console
+$ docker tag lsdtopotools/lsdtt_pytools_docker:latest lsdtopotools/lsdtt_pytools_docker:version0.4
+```
+
+Then you can push this latest version to dockerhub
+
+```console
+$ docker push lsdtopotools/lsdtt_pytools_docker:version0.4
+```
+
+Note that to do this you will need to be logged in to dockerhub.
