@@ -25,25 +25,19 @@ RUN apt-get update && apt-get install -y \
 
 
 # Some tools for fetching data
-RUN conda install -y wget unzip
+RUN mamba install -y wget unzip
 
 # Some of the plotting tools use ffmpeg
-RUN conda install -y ffmpeg
+RUN mamba install -y ffmpeg
 
 # Install topotools command line interface
-RUN conda install -y lsdtopotools
+RUN mamba install -y lsdtopotools=0.7
 
 # Now an environment for building conda
-RUN conda install -y conda-build
-
-# Now mamba since it is faster than conda
-RUN conda install -y mamba
+RUN mamba install -y conda-build
 
 # Add git 
 RUN mamba install -y git
-
-# Now the correct version of python
-RUN mamba install -y python=3.8
 
 # Now the ipython stack for creating local ipython servers
 RUN mamba install -y ipython ipykernel jupyter jupyter-book

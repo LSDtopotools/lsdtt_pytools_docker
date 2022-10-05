@@ -56,7 +56,7 @@ $ docker run -it -v C:\LSDTopoTools:/LSDTopoTools lsdtopotools/lsdtt_pytools_doc
 
 #### Running command line tools
 
-1. Command line tools are ready for use immediately. Try `# lsdtt-basic-metrics`
+1. Command line tools are ready for use immediately. Try `# lsdtt-basic-metrics -h`
 2. To see what is possible, check out the following documentation:
   * Note: for the below instructions, you will need the example datasets. Grab these with `# sh Get_LSDTT_example_data.sh`
   * https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_basic_usage.html
