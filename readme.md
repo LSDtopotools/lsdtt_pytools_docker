@@ -14,6 +14,14 @@ The package also includes a python geospatial stack:
 
 It also allows some command line processing with GDAL. See some tips for using the GDAL command line tools here: https://lsdtopotools.github.io/LSDTT_documentation/LSDTT_introduction_to_geospatial_data.html#_gdal
 
+## Versions
+
+**IMPORTANT**
+
+The current version of this container, with the `latest` and `v0.7` tags, runs on python 3.9, in order to give compatibilty with google colab. However, `lsdtopytools` currently does not function in this environment.
+
+If you wish to use `lsdtopytools` you need to use `v0.6` or earlier. 
+
 ## Instructions
 
 ### Installing Docker
