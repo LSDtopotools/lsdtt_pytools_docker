@@ -18,7 +18,7 @@ It also allows some command line processing with GDAL. See some tips for using t
 
 **IMPORTANT**
 
-The current version of this container, with the `latest` and `v0.7` tags, runs on python 3.9, in order to give compatibilty with google colab. However, `lsdtopytools` currently does not function in this environment.
+The current version of this container, with the `latest` and `v0.8` tags, runs on python 3.9, in order to give compatibilty with google colab. However, `lsdtopytools` currently does not function in this environment.
 
 If you wish to use `lsdtopytools` you need to use `v0.6` or earlier. 
 

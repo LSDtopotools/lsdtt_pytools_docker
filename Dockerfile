@@ -28,7 +28,7 @@ RUN mamba install -y wget unzip
 RUN mamba install -y ffmpeg
 
 # Install topotools command line interface
-RUN mamba install -y lsdtopotools=0.7
+RUN mamba install -y lsdtopotools=0.8
 
 # Now an environment for building conda
 RUN mamba install -y conda-build
